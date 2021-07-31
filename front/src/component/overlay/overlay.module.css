@@ -1,0 +1,15 @@
+.containerClosed {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    background-color: black;
+    pointer-events: none;
+    /* z-index: 100; */
+}
+
+.containerOpened {
+    opacity: 0.7;
+    pointer-events: initial;
+}
+

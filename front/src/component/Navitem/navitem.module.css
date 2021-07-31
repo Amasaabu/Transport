@@ -1,0 +1,11 @@
+.container > a {
+    color: #D1D1D1;
+    font-size: 1.32rem;
+    cursor: pointer;
+}
+
+@media (max-width:800px) {
+    .container {
+        margin-top:90px; 
+    }
+}

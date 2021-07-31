@@ -1,0 +1,89 @@
+.container {
+   display: grid;
+   grid-template-columns: 2fr 2fr 1fr;
+   grid-auto-rows: minmax(100px, auto);
+   gap: 30px;
+   grid-template-areas: 
+    'busDetails seatForm .'
+    'form form form';
+}
+.busDetails {
+    grid-area: busDetails;
+    margin-left: 13px;
+    padding: 5px;
+}
+
+.busDetailsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form {
+    grid-area: form;
+    width: 95%;
+    height: 335px;
+    margin: auto;
+}
+
+.formContainer {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.formContainer div {
+    width: 48%;
+}
+
+.submitBtn {
+    width: 130px;
+    height: 55px;
+    margin: auto;
+    
+}
+.ident {
+    font-weight: 500;
+    font-size: 1.5rem;
+  
+}
+
+.seatForm {
+    grid-area: seatForm;
+}
+.seatForm .header {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.arrangement {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(30px, 36px);
+    gap: 10px;
+}
+
+@media(max-width: 800px) {
+   .container {
+       display: block;
+   }
+   .busDetails {
+       width: 83%;
+       margin: auto;
+   }
+   .formContainer div {
+       width: 100%;
+   }
+   .form {
+       height: fit-content;
+       width: 80%;
+       margin: auto;
+   }
+   .formContainer {
+       display: block;
+       
+   }
+   .seatForm {
+       width: 80%;
+       margin: auto;
+       margin-top: 50px;
+   }
+}

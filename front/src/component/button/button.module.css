@@ -1,0 +1,22 @@
+.button {
+    margin-top: 11px;
+    color: #EAEAEC;
+    background-color: #1A6060;
+    border-radius: 3px;
+    border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.logInBtn {
+    color: #DCD8F6;
+    background-color: #363E00;
+    border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 12px;
+}

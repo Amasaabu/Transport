@@ -1,0 +1,9 @@
+.container {
+    background-color: #C1C058;
+    color: #363E00;
+    width: 75%;
+    height: fit-content;
+    padding: 13px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}

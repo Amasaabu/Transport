@@ -1,0 +1,48 @@
+.input {
+    width: 100%;
+    background-color: #DDF1F1;
+    border: #DDF1F1;
+    border-radius: 4px;
+    display: block;
+    outline: none;
+    height: 40px;
+    font-size: 1.3rem;
+}
+
+.label {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+.bigLabel {
+   width: 100%;
+    background-color: #DDF1F1;
+    border: 3px solid #484d4d;
+    border-radius: 4px;
+    display: block;
+    height: 40px;
+    font-size: 1.3rem;
+}
+.labelB {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.3rem;
+}
+.inputB {
+    width: 100%;
+    background-color: #363E00;
+    color: #DDF1F1;
+    border-top: black;
+    border-right: black;
+    border-left: black;
+    border-bottom: 2px solid white;
+    display: block;
+    outline: none;
+    height: 40px;
+    font-size: 1.3rem;
+}
+
+
+@media(max-width: 800px) { 
+    
+}

@@ -1,0 +1,38 @@
+.container {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    grid-auto-rows: minmax(170px, auto);
+    gap: 100px;
+   
+}
+
+.item {
+    text-align: center;
+    background-color: #CECD69;
+    cursor: pointer;
+  
+    
+}
+.item > .link {
+    color: #363E00;
+    font-size: 1.2rem;
+    
+}
+.name {
+    margin-left: 50px;
+    color: rgb(51, 51, 51);
+}
+
+.name > span {
+    font-weight: 300;
+}
+
+@media (max-width: 800px) {
+    .container {
+        display: block;
+    }
+    .item {
+        height: 40px;
+    }
+}

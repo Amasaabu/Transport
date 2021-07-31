@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+}
+.updates {
+    margin-left: 50px;
+    width: 600px;
+
+}
+/* .updates > h1 {
+    font-weight: 500;
+    margin-top: 30px;
+    color: #006E60;
+} */
+
+.book h1{
+    font-family: Caveat;
+    font-weight: 300;
+    font-size: 3.35rem;
+    letter-spacing: 1.5px;
+    color: rgb(43, 39, 39);
+}
+
+.book {
+    width: 35%;
+    margin-left: auto;
+}
+.book > .form {
+    width: 60%;
+}
+.btn {
+    width: 75px;
+    height: 32px;
+}
+.bookItems {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+    .updates {
+        width: fit-content;
+    }
+    .bookItems {
+        width: fit-content;
+        margin: auto;
+        margin-top: 35px;
+    }
+     .book  {
+        width: 80%;
+    }
+    .book > form {
+        width: 90%;
+    }
+}

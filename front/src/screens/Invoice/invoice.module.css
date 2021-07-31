@@ -1,0 +1,59 @@
+.container {
+    background-color: #FFFFFF;
+    height: 80vh;
+    overflow: scroll;
+    width: 85%;
+    margin: auto;
+    padding: 20px;
+}
+.container > .searchbox {
+    width: 80%;
+    margin-left: 50px;
+}
+.container > h2 {
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.input {
+    width: 85%;
+    background-color: #DDF1F1;
+    border: #DDF1F1;
+    border-radius: 4px;
+    display: inline-block;
+    outline: none;
+    height: 40px;
+    font-size: 1.3rem;
+}
+.btn {
+    margin-top: 11px;
+    margin-left: 30px;
+    color: #EAEAEC;
+    background-color: #1A6060;
+    border-radius: 3px;
+    border: none;
+    height: 40px;
+    width: 81px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.invoiceContainer {
+    display: flex;
+    font-size: 1.2rem;
+}
+.tagContainer {
+    width: fit-content;
+}
+.items {
+    margin-left: 70px;
+   
+}
+.payStatus {
+    margin-left: 30px;
+}
+
+.payStatus  span{
+    font-style: italic;
+}

@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    
+}
+.container .lead {
+    font-family: Caveat;
+}
+.container > .form {
+    width: 25%;
+    height: 350px;
+    padding: 20px;
+    background-color: #d8d863;
+    border-radius: 9px;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.418);
+}
+
+.btn {
+    margin-top: 20px;
+    height: 40px;
+}
+
+.switch {
+    color: #36353D;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .container {
+    display: block;
+    }
+    .container .lead {
+        display: none;
+    }
+    .container .form {
+        width: 65%;
+        margin: auto;
+    }
+}

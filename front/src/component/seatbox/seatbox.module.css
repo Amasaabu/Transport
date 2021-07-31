@@ -1,0 +1,23 @@
+.container {
+    width: 90%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: wheat;
+    color: black;
+    cursor: pointer;
+    transition: .3s all ease-in;
+}
+.container:hover {
+    transform: translate(0px, -9px);
+}
+.container h2 {
+    width: fit-content;
+    margin: auto;
+}
+.active {
+    background-color: #1A6060;
+    pointer-events: none;
+}
+.select {
+    background-color: yellow;
+}

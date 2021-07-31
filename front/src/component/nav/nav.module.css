@@ -1,0 +1,49 @@
+.container {
+    background-color: #363E00;
+    width: 100vw;
+    height: fit-content;
+    padding: 22px;
+    margin-bottom: 35px;
+}
+.navItems {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.menuBox {
+    display: none;
+}
+
+@media (max-width:800px) {
+    .container {
+        background-color: #363E00;
+        height: 45px;
+        padding: 9px;
+        position: sticky;        
+    }
+     .navItems {
+       opacity: 0;
+       pointer-events: none;
+       display: block;
+       width: fit-content;
+       margin: auto; 
+  }
+    .menuBox {
+        background-color: black;
+        width: 90px;
+        text-align: center;
+        margin: auto;
+        height: fit-content;
+         color: rgb(255, 241, 241);
+        border-radius: 3px;
+        padding: 5px;
+        display: block;
+    }
+    .menuBoxHide {
+        display: none;
+    }
+    .openNavBar {
+        opacity: 1;
+        pointer-events: initial;
+    }
+}
