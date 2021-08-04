@@ -5,6 +5,11 @@
     text-decoration: none;
     margin: 0;
     padding: 0;
+    box-sizing: content-box;
+  }
+  /* the above aslo works but because of boostrp */
+  a {
+    text-decoration: none;
   }
 body {
   margin: 0;

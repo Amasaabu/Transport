@@ -31,7 +31,7 @@ const Nav = ()=>{
         <Overlay clicked={()=>setdrawerOpened(false)} opened={drawerOpened}/>
         <div className={classes.container}>
             <div onClick={openNav} className={MenuStyle.join(' ')}>Options</div>
-            <div className={navStyle.join(' ')}> {navigationItems}</div>
+            <div className={navStyle.join(' ')}>{navigationItems}</div>
         </div>
         </>
     )

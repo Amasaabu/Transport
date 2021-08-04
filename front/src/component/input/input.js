@@ -18,23 +18,30 @@ const Input= (props)=>{
          label = <label className={labelStyle.join(' ')}><h3>{props.label}</h3></label>
          inputStyle = [classes.bigLabel]
     }
+    let error
+    if (props.error) {
+         error = <span className={classes.error}>{props.error}</span>
+    }
         switch (props.type) {
             case 'input':
                input=( <>
                     {label}
                     <input onChange={props.changed} value={props.value} className={inputStyle.join(' ')} type='input'></input>
+                    {error}
                 </>)
                 break
             case 'email':
                 input = (<>
                     {label}
                     <input onChange={props.changed} value={props.value} className={inputStyle.join(' ')} type='email'></input>
+                    {error}
                 </>)
                 break
             case 'number':
                 input = (<>
                     {label}
                     <input onChange={props.changed} value={props.value} className={inputStyle.join(' ')} type='number'></input>
+                    {error}
                 </>)
                 break;
 
@@ -42,6 +49,7 @@ const Input= (props)=>{
               input= (  <>
                    {label}
                   <input onChange={props.changed} value={props.value} className={inputStyle} type='password'></input>
+                  {error}
                 </>
               )
                 break;

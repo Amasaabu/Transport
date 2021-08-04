@@ -5,14 +5,14 @@ export const AuthenticateUser = ( input, method)=>{
     return async dispatch=>{
         dispatch({type: actionType.BEFORE_AUTHENTICATE_USER})
         try {
-            const url = method?'/api/user/signup':'/api/user/signin'
+            const url = method?'api/user/signup':'api/user/signin'
             const {data} = await axios.post(url, input)
             console.log(data)
             sessionStorage.setItem('userData', JSON.stringify(data))
             dispatch({type: actionType.AFTER_AUTHENTICATE_USER, data})
         } catch (error) {
-            dispatch({type: actionType.AUTHENTICATE_USER_ERROR})
-            console.log(error)
+            // dispatch({type: actionType.AUTHENTICATE_USER_ERROR})
+            // console.log(error)
         }
     }
 }

@@ -20,3 +20,8 @@
     cursor: pointer;
     border-radius: 12px;
 }
+
+.btnDisabled {
+    color: #464930;
+    cursor: not-allowed;
+}

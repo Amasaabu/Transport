@@ -10,9 +10,13 @@ export const Button = (props)=>{
 }
 
 export const LogInBtn = (props)=>{
+    let style = [classes.logInBtn]
+    if (props.btnDisabled) {
+       style.push(classes.btnDisabled)
+    }
     return (
         <>
-            <button onClick={props.clicked} className={classes.logInBtn}>{props.children}</button> 
+            <button disabled={props.btnDisabled} onClick={props.clicked} className={style.join(' ')}>{props.children}</button> 
         </>
     )
 }

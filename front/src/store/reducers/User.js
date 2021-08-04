@@ -26,6 +26,12 @@ export const UserReducer = (state=initialState, actions)=>{
                 loading: false,
                 userData: actions.data.user
             }
+        case actionTypes.AUTHENTICATE_USER_ERROR: {
+            return {
+                ...state,
+                loading: false
+            }
+        }
         case actionTypes.LOG_OUT: {
             return {
                 ...state,
