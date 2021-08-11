@@ -8,7 +8,7 @@ import {Route} from 'react-router-dom'
 import Updates from '../../component/Updates/updates'
 import* as actions from '../../store/actions/index'
 import* as actionTypes from '../../store/actions/actionTypes'
-import Line from '../../component/svg/Line/line'
+// import Line from '../../component/svg/Line/line'
 
 const Home = (props)=>{
    
@@ -37,12 +37,12 @@ const Home = (props)=>{
         }
     })
     const dispatch = useDispatch()
-    const Userstate = useSelector(state => state.UserReducer)
+    // const Userstate = useSelector(state => state.UserReducer)
     const searchResultState = useSelector(state=>state.searchBusReducer)
     const allLocations = useSelector(state=>state.getLocationReducer)
     const {locations} = allLocations
 
-    const {searchResult} = searchResultState
+    const {searchResult, loading} = searchResultState
   
     const formData = Object.keys(form).map((it)=>{
         return (
@@ -75,6 +75,7 @@ const Home = (props)=>{
     }]
     
     const searchAction = ()=>{
+        console.log('searching')
         //this function gets id from the value of suggestion list.
         const findIdFromAdress = (input, array)=>{
             const inputArray = input.split(',')
@@ -153,7 +154,7 @@ const Home = (props)=>{
                   <h1>Book now</h1> 
                   <div className={classes.form}>
                         {formData}
-                        <div className={classes.btn}><Button clicked={searchAction} >NEXT</Button></div> 
+                        <div className={classes.btn}><Button btnDisabled={loading} clicked={searchAction} >NEXT</Button></div> 
                   </div>
                 </div>
             </div>

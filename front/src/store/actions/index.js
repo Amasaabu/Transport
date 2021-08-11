@@ -5,10 +5,13 @@ export {
 
 export {
     AuthenticateUser,
-    Logout
+    Logout,
+    UpdateUserProfile,
+    getUserDataFromToken
 } from './User'
 
 export {
     CreateInvoice,
-    SearchInvoice
+    SearchInvoice,
+    getAllInvoiceByUser
 } from './invoice'

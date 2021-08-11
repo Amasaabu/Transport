@@ -1,0 +1,14 @@
+.container {
+    width: 50%;
+    margin: auto;
+}
+.btn {
+    width: 17%;
+    height: 30px;
+    
+}
+@media(max-width: 800px) {
+    .container {
+        width: 70%
+    }
+}

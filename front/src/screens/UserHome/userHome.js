@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux'
 
 
 const UserHome = (props) => {
-    const options = [{ tag: 'print E-ticket', url: '/invoice' }, { tag: 'Edit Profile', url: '' }, { tag: 'Cart', url: '' }, { tag: 'Information', url: '/' }, { tag: 'Saved Payment Options', url: '' }, {tag: 'Log-out', url: '/logout'}]
+    const options = [{ tag: 'Invoices', url: '/invoices' }, { tag: 'Edit Profile', url: '/edit' },{ tag: 'Book Now', url: '/' },  {tag: 'Log-out', url: '/logout'}]
     const UserState = useSelector(state => state.UserReducer)
     console.log(UserState)
 

@@ -39,8 +39,14 @@ const InvoiceSchema = new mongoose.Schema({
     amounttobepaid: {
         type: Number
     },
-    seatsposition: [{seat_id: {type: mongoose.Schema.Types.ObjectId}}]
+    userid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Users'
+    },
+    seatsposition: [{seat_id: {type: mongoose.Schema.Types.ObjectId}, position: {type: Number}}]
 })
+
+
 
 const Invoice = mongoose.model('Invoice', InvoiceSchema)
 module.exports = Invoice

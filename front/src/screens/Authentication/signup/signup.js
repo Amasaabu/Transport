@@ -26,36 +26,43 @@ const Signup = (props) => {
     })
     const [btnDisabled,setbtnDisabled] = useState(true)
     const[touched, setTouched] = useState(false)
+
     const errorCheckers = (inpValue, element)=>{
         let error = ''
         if (element==='password') {
             if (inpValue.length<=6) {
                 error = 'password characters cannot be less than 6'
                 
+            } else {
+                error = ''
+            }
+        }
+        if (element==='confirmEmail') {
+            const emailRegex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+            if (inpValue!==inputForm.email.value) {
+                error = 'Confirm email input'
+            } else if (!emailRegex.test(inpValue)) {
+                error = 'Invalid Email Entered'
             }
             else {
                 error = ''
             }
         }
-        if (element==='confirmEmail') {
-            if (inpValue!==inputForm.email.value) {
-                error = 'Confirm email input'
-            } else {
-                error = ''
-            }
-        }
         return error
     }
+
   useEffect(() => {
       if (touched) {
         if (!inputForm.confirmEmail.error&&!inputForm.password.error) {
+            console.log('no Error')
           setbtnDisabled(false)
-      } else {
+      } 
+      else {
           setbtnDisabled(true)
       }     
-    if (props.loading) {
-        setbtnDisabled(true)
-    }
+          if (props.loading) {
+              setbtnDisabled(true)
+          }
       } 
       
   }, [inputForm.confirmEmail.error, inputForm.password.error, touched, props.loading])

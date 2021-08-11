@@ -115,7 +115,6 @@ router.post('/invoice/',async (req,res,next)=>{
         const input = req.body
         const invoice = new Invoice(input)
         const vehicle = await Vehicle.findOne({_id: input.vehicle_id})
-
         // changes the occupied state of seat in vehicle model
         for (const iterator of invoice.seatsposition) {
             vehicle.seatsavailable.forEach((it, num) => {
@@ -154,7 +153,54 @@ router.post('/invoice/',async (req,res,next)=>{
         next(error)
     }
 })
-//2)we have to create a route to get all seats available in a bus
+//post invoice for authenticated users
+router.post('/invoice/authenticated',Auth, async (req, res, next) => {
+    try {
+        const input = req.body
+        const user = req.user
+        const invoice = new Invoice(input)
+        const vehicle = await Vehicle.findOne({ _id: input.vehicle_id })
+        // changes the occupied state of seat in vehicle model
+        for (const iterator of invoice.seatsposition) {
+            vehicle.seatsavailable.forEach((it, num) => {
+                if (it._id.toString() === iterator.seat_id.toString()) {
+                    console.log(num)
+                    vehicle.seatsavailable[num].occupied = true
+                }
+            })
+        }
+        //getting number of passangers based on input
+        const numberofpeoplebookedfor = input.seatsposition.length
+        if (!vehicle) {
+            res.status(404)
+            const err = new Error('Something went wrong')
+            next(err)
+            return
+        }
+        //update number of seat left on the vehicle
+        vehicle.maxpassangers = vehicle.maxpassangers - numberofpeoplebookedfor
+        if (vehicle.maxpassangers < 0) {
+            res.status(400)
+            const err = new Error('no more tickets available, check back later')
+            next(err)
+            return
+        }
+        //the total amount to be paid
+        const amount = vehicle.amount
+        invoice.amounttobepaid = amount * numberofpeoplebookedfor
+        const saved_invoice = await invoice.save()
+        const { id } = saved_invoice
+        //this is to ensure we poulate virtual fields before sending response
+        const search_invoice = await Invoice.findOne({ _id: id }).populate({ path: 'vehicle_id', populate: ['destination', 'depature'] })
+        //updating list of invoice bought by a user
+        await user.invoices.push({invoice: saved_invoice._id})
+        await vehicle.save()
+        await user.save()
+        res.send(search_invoice)
+    } catch (error) {
+        next(error)
+    }
+})
 
 //route to get invoice details
 router.get('/invoice/:id', async(req,res,next)=>{
@@ -178,8 +224,5 @@ router.get('/invoice/:id', async(req,res,next)=>{
     }
 })
 
-// const arr = ['12e', 'wsdwf', {name: 'ade', other: {age: '23'}}]
-// const val = 'other'
-// console.log(arr[2]['other'].age)
 
 module.exports=router

@@ -28,3 +28,22 @@ export const InvoiceReducer = (state=initialState, actions)=>{
             return state
     }
 }
+
+export const UserInvoices = (state={loading: false, invoices: []}, actions)=>{
+    switch (actions.type) {
+        case actionTypes.BEFORE_GET_USER_INVOICES:
+            return {
+                ...state,
+                loading: true
+            }
+        case actionTypes.AFTER_GET_USER_INVOICES:
+            console.log(actions.data) 
+            return {
+                ...state,
+                loading: false,
+                invoices: actions.data
+            }
+        default:
+            return state;
+    }
+}

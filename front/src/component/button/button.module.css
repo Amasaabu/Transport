@@ -9,7 +9,10 @@
     font-size: 1rem;
     cursor: pointer;
 }
-
+.btnDisabled {
+    background-color: #5ea1a1;
+    cursor: not-allowed;
+}
 .logInBtn {
     color: #DCD8F6;
     background-color: #363E00;
@@ -21,7 +24,7 @@
     border-radius: 12px;
 }
 
-.btnDisabled {
+.logInBtnDisabled {
     color: #464930;
     cursor: not-allowed;
 }

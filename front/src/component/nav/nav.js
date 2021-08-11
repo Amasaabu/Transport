@@ -9,7 +9,7 @@ const Nav = ()=>{
     const UserReducer = useSelector(state => state.UserReducer)
     const {userData} = UserReducer
     let AuthMode
-    AuthMode = userData.surname?AuthMode='Menu':'Log-in'
+    AuthMode = userData.email?AuthMode='Menu':'Log-in'
     const navItems = [{ link: '/', display: 'Book now' }, { link: '/', display: 'Report An issue' }, { link: '/invoice', display: 'Invoice Details' }, { link: '/auth', display: AuthMode }]
 
     const navigationItems = navItems.map(it => <NavItem key={it.display} link={it.link} display={it.display} />)

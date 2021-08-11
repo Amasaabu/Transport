@@ -44,7 +44,8 @@
     font-size: 1.2rem;
 }
 .tagContainer {
-    width: fit-content;
+    width: 500px;
+   
 }
 .items {
     margin-left: 70px;

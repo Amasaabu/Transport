@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    phoneNumber: {
+        type: Number
+    },
+    invoices: [{ invoice: { type: mongoose.Schema.Types.ObjectId, ref: 'Invoice'}}],
     tokens: [{token: {type: String}}]
 })
 

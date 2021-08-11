@@ -1,17 +1,31 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import classes from './invoice.module.css'
 import {useSelector, useDispatch} from 'react-redux'
 import * as actions from '../../store/actions/index'
+import withErrorHandler from '../../hoc/withErrorHandler'
+import {useParams} from 'react-router-dom'
 
 const Invoice = () => {
-    // let url = '/invoice'
+    //when redirected from invoices by userInvoice
+    const dispatch = useDispatch()
+    const params = useParams()
+    const {id} = params
+    useEffect(() => {
+        if (id) {
+            dispatch(actions.SearchInvoice(id))
+        }
+    }, [dispatch, id, ])
+    
     let invoice
     const InvoiceReducer = useSelector(state => state.InvoiceReducer)
     const { invoiceData } = InvoiceReducer
     const [searchvalue, setsearchvalue] = useState()
-    const dispatch = useDispatch()
-    const invoice_object = {vehicle_id: {depature: '',destination: ''},...invoiceData}
+    const invoice_object = {vehicle_id: {depature: '',destination: ''},seatsposition: [],...invoiceData}
     const date = new Date(invoice_object.vehicle_id.depaturedate)
+    // to structure seat number
+    const seats = invoice_object.seatsposition.map((it)=>{
+    return (<span key={it.position}>{it.position},</span>)
+    })
     console.log(invoice_object)
     if (invoiceData._id) {
          invoice = (
@@ -21,16 +35,20 @@ const Invoice = () => {
                  <div className={classes.tagContainer}>
                      <div>Name</div>
                      <div>Date</div>
-                     <div>Depature Information</div>
-                     <div>Destination Information</div>
+                     <div>Depature</div>
+                     <div>Destination</div>
                      <div>Amount to Be Paid</div>
+                     <div>Invoice Id</div>
+                     <div>seats:</div>
                  </div>
                  <div className={classes.items}>
                     <div>{invoice_object.name}</div>
-                    <div>{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}</div>
+                    <div>{`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}, ${invoice_object.vehicle_id.time}`}</div>
                     <div>{`${invoice_object.vehicle_id.depature.state}, ${invoice_object.vehicle_id.depature.address}`}</div>
                     <div>{`${invoice_object.vehicle_id.destination.state},${invoice_object.vehicle_id.destination.address}`}</div>
                     <div>{`${invoice_object.amounttobepaid}`}</div>
+                    <div>{`${invoice_object._id}`}</div>
+         <div>{seats}</div>
                  </div>
                 <div className={classes.payStatus}><h3>Payment Status:<span >{invoiceData.status}</span></h3></div>
                  </div>
@@ -76,4 +94,4 @@ const Invoice = () => {
     )
 }
 
-export default Invoice
+export default withErrorHandler(Invoice)

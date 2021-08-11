@@ -1,0 +1,29 @@
+.container {
+    width: 480px;
+    height: 115px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all .5s;
+    margin-bottom: 20px;
+}
+.container:hover{
+    transform: translate(0px, -10px);
+}
+.invoice {
+    display: flex;
+    justify-content: space-around;
+}
+.from {
+    font-size: 2rem;
+}
+
+.to {
+    font-size: 2rem;
+}
+@media(max-width: 800px) {
+    .container {
+        width: fit-content
+    }
+}

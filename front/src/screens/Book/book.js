@@ -8,14 +8,13 @@ import Input from '../../component/input/input'
 import CarImage from '../../asset/images/bus.png'
 import {Button} from '../../component/button/button'
 import Seatbox from '../../component/seatbox/seatbox'
-
+import withErrorHandler from '../../hoc/withErrorHandler'
 const Book = (props) => {
     // props.match.params
    const {vehicle_id} = useParams()
 
     const dispatch = useDispatch()
     const searchResultState = useSelector(state => state.searchBusReducer)
-    
     const {searchResult} = searchResultState
 
     //we have to initialze this with this values for the first render when array is empty
@@ -98,7 +97,11 @@ const Book = (props) => {
         )
     })
     const [selectedSeat, setSelectedSeat] = useState([])
-
+    const userReducer = useSelector(state => state.UserReducer)
+    let isAuthenticated = false
+    if (userReducer.userData.email) {
+        isAuthenticated = true
+    }
     const Submit = ()=>{
         const data = {
             name: form1.Name.value,
@@ -110,7 +113,7 @@ const Book = (props) => {
             seatsposition: selectedSeat
         }
         console.log(data)
-        dispatch(actions.CreateInvoice(data))
+        dispatch(actions.CreateInvoice(data, isAuthenticated))
         props.history.push(`/invoice`)
     }
     useEffect(() => {
@@ -166,7 +169,7 @@ const Book = (props) => {
                                 clicked={() => {
                                     setSelectedSeat([
                                         ...selectedSeat,
-                                        { seat_id: it._id }
+                                        { seat_id: it._id , position:it.position}
                                     ])
                                 }}
                                 />
@@ -183,4 +186,4 @@ const Book = (props) => {
     )
 }
 
-export default Book
+export default withErrorHandler(Book)

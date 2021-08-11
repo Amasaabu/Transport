@@ -3,16 +3,14 @@ import classes from './input.module.css'
 
 const Input= (props)=>{
     let input = ''
-    let labelStyle
-    let inputStyle
-    
+    let labelStyle = [classes.label]
+    let inputStyle = [classes.input]
     if (props.box) {
+        //if input is in box component
         inputStyle = [classes.inputB]
         labelStyle = [classes.labelB]
-    } else {
-        inputStyle = [classes.input]
-        labelStyle = [classes.label]
-    }
+    } 
+
     let label = <label className={labelStyle.join(' ')}>{props.label}</label>
     if (props.bigLabel) {
          label = <label className={labelStyle.join(' ')}><h3>{props.label}</h3></label>

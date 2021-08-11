@@ -9,22 +9,21 @@ import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import {UserReducer} from './store/reducers/User'
 import { searchBusReducer, getLocationReducer} from './store/reducers/Search'
-import {InvoiceReducer} from './store/reducers/invoice'
+import {InvoiceReducer, UserInvoices} from './store/reducers/invoice'
 
 const rootReducer = combineReducers({
   UserReducer,
   searchBusReducer,
   getLocationReducer,
-  InvoiceReducer
+  InvoiceReducer,
+  UserInvoices
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
     <App />
-  </React.StrictMode>
   </Provider>,
   document.getElementById('root')
 );

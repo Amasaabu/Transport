@@ -1,13 +1,13 @@
 import* as actionTypes from '../actions/actionTypes'
 
-const data = sessionStorage.getItem('userData')
+const data = sessionStorage.getItem('token')
 const parsed_data = data ? JSON.parse(data) : {}
 const initialState = {
     userData: {
         email: '',
-        ...parsed_data.user
+        token: parsed_data
     },
-    authDone: false,
+    updated: false,
     loading: false,
     error: false
 }
@@ -17,6 +17,7 @@ export const UserReducer = (state=initialState, actions)=>{
         case actionTypes.BEFORE_AUTHENTICATE_USER:
             return {
                 ...state,
+                updated: false,
                 loading: true
             }   
         case actionTypes.AFTER_AUTHENTICATE_USER:
@@ -26,6 +27,14 @@ export const UserReducer = (state=initialState, actions)=>{
                 loading: false,
                 userData: actions.data.user
             }
+        case actionTypes.AFTER_UPDATE_USER: {
+            return {
+                ...state,
+                loading: false,
+                updated: true,
+                userData: actions.data
+            }
+        }
         case actionTypes.AUTHENTICATE_USER_ERROR: {
             return {
                 ...state,
